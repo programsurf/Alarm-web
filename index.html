@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conference Deadline Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Conference Deadline Tracker</h1>
+            <p class="subtitle">AI, Security, Network 학회 데드라인</p>
+        </header>
+
+        <div class="controls">
+            <div class="filter-group">
+                <label>카테고리</label>
+                <div class="filter-buttons" id="categoryFilter">
+                    <button class="filter-btn active" data-category="all">All</button>
+                    <button class="filter-btn" data-category="AI/Vision">AI/Vision</button>
+                    <button class="filter-btn" data-category="Security">Security</button>
+                    <button class="filter-btn" data-category="Network">Network</button>
+                    <button class="filter-btn" data-category="Data">Data</button>
+                </div>
+            </div>
+            <div class="filter-group">
+                <label>정렬</label>
+                <select id="sortSelect">
+                    <option value="deadline">마감일순</option>
+                    <option value="name">이름순</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="stats" id="stats">
+            <span class="stat-item urgent">🔴 긴급 (30일내): <span id="urgentCount">0</span></span>
+            <span class="stat-item soon">🟡 임박 (6개월내): <span id="soonCount">0</span></span>
+            <span class="stat-item normal">🟢 여유 (6개월+): <span id="normalCount">0</span></span>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>학회 정보를 불러오는 중...</p>
+        </div>
+
+        <div class="conference-list" id="conferenceList"></div>
+
+        <footer>
+            <p>Data source: <a href="https://github.com/ccfddl/ccf-deadlines" target="_blank">ccfddl</a> |
+               Updated: <span id="updateTime">-</span></p>
+        </footer>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
